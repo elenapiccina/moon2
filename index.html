@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Moon Phase</title>
+
+<!-- Serif aesthetic -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --cream:#fffaf7;
+    --pink:#f3d7dc;
+    --pink-soft:#f9e9ec;
+    --ink:#272634;
+    --muted:#80777b;
+    --line:#eadfe1;
+    --night:#171827;
+    --night-soft:#222338;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    margin:0;
+    padding:0;
+    background:transparent;
+}
+
+body{
+    font-family:"Cormorant Garamond", Georgia, serif;
+}
+
+/* =========================
+   MAIN WIDGET
+========================= */
+
+.moon-widget{
+    width:300px;
+    min-height:300px;
+    background:var(--cream);
+    border:1px solid #eee2e2;
+    border-radius:28px;
+    padding:12px;
+    box-shadow:
+        0 12px 35px rgba(60,45,50,.08),
+        inset 0 0 0 1px rgba(255,255,255,.6);
+    overflow:hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.moon-header{
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7px 7px 8px;
+}
+
+.moon-title{
+    font-family:"DM Serif Display", Georgia, serif;
+    font-size:17px;
+    font-weight:400;
+    letter-spacing:.7px;
+    color:var(--ink);
+}
+
+.moon-today{
+    font-family:"Cormorant Garamond", Georgia, serif;
+    font-size:14px;
+    color:#9a858b;
+}
+
+/* =========================
+   MOON AREA
+========================= */
+
+.moon-box{
+    height:188px;
+    border-radius:21px;
+    background:
+        radial-gradient(
+            circle at 50% 43%,
+            #30334b 0%,
+            #202238 48%,
+            #151625 100%
+        );
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+/* tiny stars */
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:#fff;
+    border-radius:50%;
+    opacity:.45;
+}
+
+.star.one{top:22px;left:28px}
+.star.two{top:45px;right:31px}
+.star.three{top:73px;left:47px}
+.star.four{top:27px;right:72px}
+.star.five{bottom:48px;left:28px}
+.star.six{bottom:35px;right:45px}
+.star.seven{top:96px;right:28px}
+
+/* =========================
+   OFFICIAL WIDGET
+========================= */
+
+#moonphase-wrapper{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/*
+   The official MoonPhases widget injects
+   its own markup here.
+*/
+
+#moonphase-widget{
+    width:100%;
+    text-align:center;
+}
+
+/* =========================
+   TRY TO NORMALISE
+   OFFICIAL WIDGET TYPOGRAPHY
+========================= */
+
+#moonphase-wrapper,
+#moonphase-wrapper *{
+    font-family:"Cormorant Garamond", Georgia, serif !important;
+    font-weight:400 !important;
+}
+
+/* Remove unnecessary default visual weight */
+
+#moonphase-wrapper h1,
+#moonphase-wrapper h2,
+#moonphase-wrapper h3,
+#moonphase-wrapper strong,
+#moonphase-wrapper b{
+    font-family:"DM Serif Display", Georgia, serif !important;
+    font-weight:400 !important;
+}
+
+/* =========================
+   LOWER INFORMATION
+========================= */
+
+.moon-info{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    margin-top:9px;
+}
+
+.info-pill{
+    flex:1;
+    min-width:0;
+    height:34px;
+    border-radius:16px;
+    background:var(--pink-soft);
+    border:1px solid #f0dfe2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.info-label{
+    font-size:10px;
+    color:#a38e94;
+    line-height:10px;
+    letter-spacing:.4px;
+}
+
+.info-value{
+    font-size:14px;
+    color:var(--ink);
+    line-height:14px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.moon-footer{
+    margin-top:8px;
+    text-align:center;
+    font-size:12px;
+    color:#a29498;
+    letter-spacing:.3px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:420px){
+
+    .moon-widget{
+        width:280px;
+        min-height:280px;
+    }
+
+    .moon-box{
+        height:174px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="moon-widget">
+
+    <div class="moon-header">
+        <div class="moon-title">MOON PHASE ♡</div>
+        <div class="moon-today">Today</div>
+    </div>
+
+
+    <div class="moon-box">
+
+        <div class="star one"></div>
+        <div class="star two"></div>
+        <div class="star three"></div>
+        <div class="star four"></div>
+        <div class="star five"></div>
+        <div class="star six"></div>
+        <div class="star seven"></div>
+
+
+        <!--
+        OFFICIAL MOONPHASES.CO.UK WIDGET
+
+        Their Tools page officially provides:
+        widget="thin"
+        -->
+
+        <div id="moonphase-wrapper">
+
+            <div id="moonphase-widget"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="moon-info">
+
+        <div class="info-pill">
+            <div class="info-label">SOURCE</div>
+            <div class="info-value">MoonPhases</div>
+        </div>
+
+        <div class="info-pill">
+            <div class="info-label">CYCLE</div>
+            <div class="info-value">29.53 days</div>
+        </div>
+
+    </div>
+
+
+    <div class="moon-footer">
+        lunar rhythm · today
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     OFFICIAL MOONPHASES.CO.UK WIDGET
+================================================== -->
+
+<script
+    type="text/javascript"
+    src="https://moonphases.co.uk/js/widget.js"
+    id="moonphase_widget"
+    widget="thin"
+    lat=""
+    lng=""
+    date=""
+    tz="">
+</script>
+
+
+<script>
+
+/*
+   The MoonPhases script normally inserts its widget
+   according to the element with id="moonphase_widget".
+
+   This small observer makes sure the injected widget
+   inherits the serif aesthetic.
+*/
+
+const observer = new MutationObserver(() => {
+
+    const widget = document.getElementById("moonphase_widget");
+
+    if(widget){
+
+        widget.style.fontFamily =
+            '"Cormorant Garamond", Georgia, serif';
+
+        widget.style.fontWeight = "400";
+
+    }
+
+});
+
+observer.observe(document.body, {
+    childList:true,
+    subtree:true
+});
+
+</script>
+
+</body>
+</html>
